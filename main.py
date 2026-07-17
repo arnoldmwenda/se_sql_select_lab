@@ -51,7 +51,7 @@ df_name_length = pd.read_sql(
 # Replace None with your code
 df_short_title = pd.read_sql(
     """
-    SELECT SUBSTRING(jobTitle, 1, 2) AS short_title
+    SELECT SUBSTR(jobTitle, 1, 2) AS short_title
     FROM employees;
     """, conn)
 #print(df_short_title.head())
@@ -60,7 +60,7 @@ df_short_title = pd.read_sql(
 # Replace None with your code
 df_total_amount = pd.read_sql(
     """
-    SELECT CAST(SUM(ROUND(priceEach * quantityOrdered, 0)) AS INT) AS total_amount
+    SELECT CAST(SUM(ROUND(priceEach * quantityOrdered, 0)) AS INTEGER) AS total_amount
     FROM orderdetails;
     """, conn)
 sum_total_price = df_total_amount['total_amount']
